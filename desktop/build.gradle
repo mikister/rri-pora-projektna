@@ -33,6 +33,14 @@ task dist(type: Jar) {
     with jar
 }
 
+task pack_atlass(dependsOn: classes, type: JavaExec) {
+    main = "si.um.feri.zzz.sonda2022.desktop.AssetPacker"
+    classpath = sourceSets.main.runtimeClasspath
+    standardInput = System.in
+    workingDir = new File("../")
+    ignoreExitValue = true
+}
+
 
 dist.dependsOn classes
 
