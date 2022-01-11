@@ -7,6 +7,7 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Logger;
 
+import si.um.feri.zzz.sonda2022.assets.AssetDescriptors;
 import si.um.feri.zzz.sonda2022.screens.MainMenuScreen;
 
 public class SondaGame extends Game {
@@ -18,6 +19,9 @@ public class SondaGame extends Game {
 		Gdx.app.setLogLevel(Application.LOG_DEBUG);
 
 		assetManager = new AssetManager();
+		assetManager.load(AssetDescriptors.FONT);
+		assetManager.load(AssetDescriptors.UI_SKIN);
+		assetManager.finishLoading();
 		assetManager.getLogger().setLevel(Logger.DEBUG);
 
 		batch = new SpriteBatch();

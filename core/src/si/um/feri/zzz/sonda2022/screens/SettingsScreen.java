@@ -6,11 +6,13 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
 import si.um.feri.zzz.sonda2022.SondaGame;
+import si.um.feri.zzz.sonda2022.assets.AssetDescriptors;
 import si.um.feri.zzz.sonda2022.config.GameConfig;
 
 public class SettingsScreen extends ScreenAdapter {
@@ -20,6 +22,7 @@ public class SettingsScreen extends ScreenAdapter {
 
     private Viewport viewport;
     private Stage stage;
+    private Skin skin;
 
     public SettingsScreen(SondaGame game) {
         this.game = game;
@@ -31,6 +34,8 @@ public class SettingsScreen extends ScreenAdapter {
     public void show() {
         viewport = new FitViewport(GameConfig.UI_WIDTH, GameConfig.UI_HEIGHT);
         stage = new Stage(viewport, game.getBatch());
+
+        skin = assetManager.get(AssetDescriptors.UI_SKIN);
 
         setupStage();
         Gdx.input.setInputProcessor(stage);
