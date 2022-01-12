@@ -1,5 +1,6 @@
 package si.um.feri.zzz.sonda2022.screens;
 
+import com.badlogic.ashley.core.PooledEngine;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.ScreenAdapter;
@@ -15,6 +16,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import si.um.feri.zzz.sonda2022.SondaGame;
 import si.um.feri.zzz.sonda2022.common.GameManager;
 import si.um.feri.zzz.sonda2022.config.GameConfig;
+import si.um.feri.zzz.sonda2022.ecs.system.passive.EntityFactorySystem;
 
 public class GameScreen extends ScreenAdapter {
     private final AssetManager assetManager;
@@ -26,6 +28,7 @@ public class GameScreen extends ScreenAdapter {
     private OrthographicCamera camera;
     private Viewport viewport;
     private Viewport hudViewport;
+    private PooledEngine engine;
 
     public GameScreen(SondaGame game) {
         assetManager = game.getAssetManager();
@@ -38,6 +41,11 @@ public class GameScreen extends ScreenAdapter {
         camera = new OrthographicCamera();
         viewport = new FitViewport(GameConfig.GAME_WIDTH, GameConfig.GAME_HEIGHT, camera);
         hudViewport = new FitViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+
+        engine = new PooledEngine();
+
+        // passive systems
+        engine.addSystem(new EntityFactorySystem(assetManager));
     }
 
     @Override
@@ -54,6 +62,12 @@ public class GameScreen extends ScreenAdapter {
         ScreenUtils.clear(Color.BLACK);
 
         if (GameManager.INSTANCE.isGameOver()) {
+            engine.update(0);
+        } else {
+            engine.update(delta);
+        }
+
+        if (GameManager.INSTANCE.isGameOver()) {
             game.setScreen(new MainMenuScreen(game));
         }
     }
@@ -65,5 +79,6 @@ public class GameScreen extends ScreenAdapter {
 
     @Override
     public void dispose() {
+        engine.removeAllEntities();
     }
 }
