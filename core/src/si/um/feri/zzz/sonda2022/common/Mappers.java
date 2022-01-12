@@ -2,6 +2,7 @@ package si.um.feri.zzz.sonda2022.common;
 
 import com.badlogic.ashley.core.ComponentMapper;
 
+import si.um.feri.zzz.sonda2022.ecs.component.BoundsComponent;
 import si.um.feri.zzz.sonda2022.ecs.component.DimensionComponent;
 import si.um.feri.zzz.sonda2022.ecs.component.MovementComponent;
 import si.um.feri.zzz.sonda2022.ecs.component.PositionComponent;
@@ -16,6 +17,8 @@ public final class Mappers {
 
     public static final ComponentMapper<DimensionComponent> DIMENSION = ComponentMapper
             .getFor(DimensionComponent.class);
+
+    public static final ComponentMapper<BoundsComponent> BOUNDS = ComponentMapper.getFor(BoundsComponent.class);
 
     private Mappers() {
     }
