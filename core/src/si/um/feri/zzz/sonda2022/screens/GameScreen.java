@@ -17,6 +17,7 @@ import si.um.feri.zzz.sonda2022.SondaGame;
 import si.um.feri.zzz.sonda2022.common.GameManager;
 import si.um.feri.zzz.sonda2022.config.GameConfig;
 import si.um.feri.zzz.sonda2022.ecs.system.passive.EntityFactorySystem;
+import si.um.feri.zzz.sonda2022.ecs.system.passive.StartUpSystem;
 
 public class GameScreen extends ScreenAdapter {
     private final AssetManager assetManager;
@@ -46,6 +47,7 @@ public class GameScreen extends ScreenAdapter {
 
         // passive systems
         engine.addSystem(new EntityFactorySystem(assetManager));
+        engine.addSystem(new StartUpSystem());
     }
 
     @Override

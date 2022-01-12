@@ -9,6 +9,9 @@ public class GameConfig {
     public static float GAME_WIDTH = 512f;
     public static float GAME_HEIGHT = 288f;
 
+    // PLAYER
+    public static float PLAYER_SCALE = 25f;
+
     private GameConfig() {
     }
 }
