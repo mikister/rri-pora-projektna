@@ -17,6 +17,7 @@ import si.um.feri.zzz.sonda2022.SondaGame;
 import si.um.feri.zzz.sonda2022.common.GameManager;
 import si.um.feri.zzz.sonda2022.config.GameConfig;
 import si.um.feri.zzz.sonda2022.ecs.system.BoundsSystem;
+import si.um.feri.zzz.sonda2022.ecs.system.MovementSystem;
 import si.um.feri.zzz.sonda2022.ecs.system.RenderSystem;
 import si.um.feri.zzz.sonda2022.ecs.system.passive.EntityFactorySystem;
 import si.um.feri.zzz.sonda2022.ecs.system.passive.StartUpSystem;
@@ -54,6 +55,7 @@ public class GameScreen extends ScreenAdapter {
         // active systems
         engine.addSystem(new RenderSystem(batch, viewport));
         engine.addSystem(new BoundsSystem());
+        engine.addSystem(new MovementSystem());
     }
 
     @Override
