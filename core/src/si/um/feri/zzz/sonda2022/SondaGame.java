@@ -21,6 +21,7 @@ public class SondaGame extends Game {
 		assetManager = new AssetManager();
 		assetManager.load(AssetDescriptors.FONT);
 		assetManager.load(AssetDescriptors.UI_SKIN);
+		assetManager.load(AssetDescriptors.ATLAS_GAME);
 		assetManager.finishLoading();
 		assetManager.getLogger().setLevel(Logger.DEBUG);
 
