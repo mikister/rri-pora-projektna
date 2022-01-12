@@ -7,6 +7,7 @@ import si.um.feri.zzz.sonda2022.ecs.component.DimensionComponent;
 import si.um.feri.zzz.sonda2022.ecs.component.MovementComponent;
 import si.um.feri.zzz.sonda2022.ecs.component.PositionComponent;
 import si.um.feri.zzz.sonda2022.ecs.component.RotationComponent;
+import si.um.feri.zzz.sonda2022.ecs.component.TextureComponent;
 
 public final class Mappers {
     public static final ComponentMapper<PositionComponent> POSITION = ComponentMapper.getFor(PositionComponent.class);
@@ -19,6 +20,8 @@ public final class Mappers {
             .getFor(DimensionComponent.class);
 
     public static final ComponentMapper<BoundsComponent> BOUNDS = ComponentMapper.getFor(BoundsComponent.class);
+
+    public static final ComponentMapper<TextureComponent> TEXTURE = ComponentMapper.getFor(TextureComponent.class);
 
     private Mappers() {
     }
