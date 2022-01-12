@@ -13,4 +13,8 @@ public class GameManager {
     private GameManager() {
         PREFS = Gdx.app.getPreferences(SondaGame.class.getSimpleName());
     }
+
+    public boolean isGameOver() {
+        return false;
+    }
 }

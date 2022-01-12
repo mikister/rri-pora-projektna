@@ -13,11 +13,13 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
 import si.um.feri.zzz.sonda2022.SondaGame;
+import si.um.feri.zzz.sonda2022.common.GameManager;
 import si.um.feri.zzz.sonda2022.config.GameConfig;
 
 public class GameScreen extends ScreenAdapter {
     private final AssetManager assetManager;
     private final SpriteBatch batch;
+    private final SondaGame game;
 
     private static final Logger log = new Logger(GameScreen.class.getSimpleName(), Logger.DEBUG);
 
@@ -28,6 +30,7 @@ public class GameScreen extends ScreenAdapter {
     public GameScreen(SondaGame game) {
         assetManager = game.getAssetManager();
         batch = game.getBatch();
+        this.game = game;
     }
 
     @Override
@@ -49,6 +52,10 @@ public class GameScreen extends ScreenAdapter {
             Gdx.app.exit();
 
         ScreenUtils.clear(Color.BLACK);
+
+        if (GameManager.INSTANCE.isGameOver()) {
+            game.setScreen(new MainMenuScreen(game));
+        }
     }
 
     @Override
